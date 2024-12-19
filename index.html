@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎅 Recuerdos 2024 - Valentina Carrera</title>
+    <style>
+        /* Importa la fuente Poppins desde Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        /* Estilos globales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins";
+        }
+
+        /* Estilo del cuerpo */
+        body {
+            min-height: 100vh;
+            background: #1a1f29;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(231, 76, 60, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(46, 204, 113, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(231, 76, 60, 0.1) 0%, transparent 50%);
+        }
+
+        /* Decoraciones animadas */
+        .decoration {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.50;
+            z-index:0;
+            pointer-events: none;
+        }
+
+        /* Animación flotante */
+        @keyframes float {
+            0%{
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10%{
+                opacity: 0.5;
+            }
+
+            90%{
+                opacity: 0.5;
+            }
+
+            100%{
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Título principal */
+        .title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Diseño de cuadrícula para fotos */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            flex-grow: 1;
+            margin: 2rem 0;
+        }
+
+        /* Contenedor de cada foto */
+        .photo-container {
+            position: relative;
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        /* Efecto al pasar el mouse sobre la foto */
+        .photo-container:hover {
+
+        }
+
+        /* Gradiente decorativo al pasar el mouse */
+        .photo-container::before {
+
+        }
+
+        .photo-container:hover::before {
+
+        }
+
+        /* Imagen dentro del contenedor */
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Pie de página */
+        .footer {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: auto;
+            padding: 1rem;
+            font-weight: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor para decoraciones animadas -->
+    <div class="decorations-container"></div>
+
+    <!-- Contenedor principal de la página -->
+    <div class="container">
+        <!-- Título principal -->
+        <h1 class="title">✨ Recuerdos 2024 ✨</h1>
+
+        <!-- Cuadrícula de fotos -->
+        <div class="photo-grid">
+
+            <div class="photo-container">
+                <img src="./images/fotitos/IMG_0629.JPG" class="photo">
+            </div>
+
+            <div class="photo-container">
+                <img src="./images/fotitos/IMG_0625.JPG" class="photo">
+            </div>
+
+            <div class="photo-container">
+                <img src="./images/fotitos/IMG_0623.JPG" class="photo">
+            </div>
+
+            <div class="photo-container">
+                <img src="./images/fotitos/IMG_0621.JPG" class="photo">
+            </div>
+
+        </div>
+
+        <!-- Pie de página -->
+        <div class="footer">Valentina Carrera te desea <br> <strong>🎉🎊 Felices Fiestas 🎁🎄</strong></div>
+    </div>
+
+    <script>
+        // Función para crear decoraciones animadas
+        function createDecorations() {
+            // Selecciona el contenedor donde se añadirán las decoraciones
+            const container = document.querySelector('.decorations-container');
+
+            // Lista de decoraciones en forma de emojis
+            const decorations = [
+                "🎄", "🎅", "🤶", "🎁", "🎉", "🍾", "🥂", "🎆", "🎇", "🍽️", "🌟", "🕯️", "🕛", "⏳",
+                "📚", "🎓", "🎶", "📖", "🏆", "🏫", "✨", "💫", "🌈", "📝", "🎯", "🎊", "🤩", "🌍", "💖",
+                "🎯", "🍷", "💌", "🧑‍🤝‍🧑", "🎶"];
+
+            // Número total de decoraciones a generar
+            const numDecorations = 50;
+
+            // Función para crear una única decoración
+            function createDecoration() {
+            const decoration = document.createElement("div")
+
+            decoration.className = "decoration"
+
+            decoration.textContent = decorations[ Math.floor(Math.random() * decorations.length) ]
+
+            decoration.style.left = `${Math.random() *100}vw` 
+
+            decoration.style.bottom = "-50px"
+
+            const duration = 15 + Math.random() * 10
+
+            decoration.style.animation = `float ${duration}s linear ${Math.random() * 10}s infinite`
+
+            container.appendChild(decoration)
+
+            }
+
+            // Bucle para crear el número especificado de decoraciones
+            for (let i = 0; i < numDecorations; i++) {
+                createDecoration(); // Llama a la función para crear cada decoración
+            }
+        }
+
+        // Añade un evento al cargar la ventana para iniciar las decoraciones
+        window.addEventListener('load', () => {
+            createDecorations()
+        });
+
+    </script>
+</body>
+
+</html>
